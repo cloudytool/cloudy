@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig",
+  "compilerOptions": {
+    "module": "es2022",
+    "moduleResolution": "Node",
+    "noEmit": true
+  },
+  "references": [
+    {"path": ".."}
+  ]
+}
