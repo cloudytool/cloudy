@@ -1,6 +1,7 @@
 import * as path from 'node:path'
 import {execSync} from 'node:child_process'
 import {Command, Flags} from '@oclif/core'
+import Doctor from './doctor'
 
 export default class Up extends Command {
   static description = 'Run deployment update of the project'
@@ -26,6 +27,17 @@ export default class Up extends Command {
     const projectRoot = flags.root ?? cwd
     const projectPath = path.join(projectRoot, 'projects', projectName)
 
-    execSync(`(PULUMI_CONFIG_PASSPHRASE= cd ${projectPath} && sh up.sh ${projectName})`, {stdio: 'inherit'})
+    await Doctor.run()
+
+    const cmdName = this.constructor.name.toLowerCase()
+
+    const cmd = [
+      'export PULUMI_CONFIG_PASSPHRASE=""',
+      `cd ${projectPath}`,
+      'yarn',
+      `${process.env.SHELL} ${cmdName}.sh ${projectName}`,
+    ].join(' && ')
+
+    execSync(`(${cmd})`, {stdio: 'inherit'})
   }
 }
