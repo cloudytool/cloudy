@@ -31,7 +31,6 @@ export default class Init extends Command {
     const projectRoot = flags.root ?? cwd
     const projectPath = path.join(projectRoot, 'projects', projectName)
 
-    const pulumiProjectPath = path.join(projectPath, 'Pulumi.yaml')
     const pulumiConfigPath = path.join(projectPath, `Pulumi.${projectName}.yaml`)
 
     if (fs.existsSync(projectPath)) {
@@ -61,7 +60,25 @@ export default class Init extends Command {
     let dbUser
     let dbPass
     let dbName
-    let dbConfig = {}
+
+    let dbConfig = {
+      'db:allocatedStorage': 30,
+      'db:maxAllocatedStorage': 100,
+      'db:engine': 'postgres',
+      'db:engineVersion': 12.4,
+      'db:engineGroupName': 'default.postgres12',
+      'db:instanceClass': 'db.t3.medium',
+      'db:user': '',
+      'db:pass': '',
+      'db:databaseName': '',
+      'db:storageType': 'gp2',
+      'db:backupRetentionPeriod': 3,
+      'db:backupWindow': '03:00-04:00',
+      'db:deleteAutomatedBackups': false,
+      'db:deletionProtection': false,
+      'db:finalSnapshotIdentifier': `${projectName}-db-final-snapshot`,
+      'db:skipFinalSnapshot': true,
+    }
 
     if (dbNeeded) {
       dbUser = `${projectName}user`
@@ -69,32 +86,14 @@ export default class Init extends Command {
       dbName = dbUser
 
       dbConfig = {
-        'db:allocatedStorage': 30,
-        'db:maxAllocatedStorage': 100,
-        'db:engine': 'postgres',
-        'db:engineVersion': 12.4,
-        'db:engineGroupName': 'default.postgres12',
-        'db:instanceClass': 'db.t3.medium',
+        ...dbConfig,
         'db:user': dbUser,
         'db:pass': dbPass,
         'db:databaseName': dbName,
-        'db:storageType': 'gp2',
-        'db:backupRetentionPeriod': 3,
-        'db:backupWindow': '03:00-04:00',
-        'db:deleteAutomatedBackups': false,
-        'db:deletionProtection': false,
-        'db:finalSnapshotIdentifier': `${projectName}-db-final-snapshot`,
-        'db:skipFinalSnapshot': true,
       }
     }
 
-    execSync(`git clone --progress https://github.com/cloudylab-net/pulumi-aws-cluster.git ${projectPath}`)
-
-    await writeYamlFile(pulumiProjectPath, {
-      name: projectName,
-      runtime: 'nodejs',
-      description: `${projectName} in AWS`,
-    })
+    execSync(`git clone --progress https://github.com/cloudylab-net/pulumi-aws-cluster.git ${projectPath}`, {stdio: 'inherit'})
 
     const exchangeBucketId = (Math.random() + 1).toString(36).slice(7)
 

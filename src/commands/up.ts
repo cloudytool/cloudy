@@ -1,28 +1,31 @@
+import * as path from 'node:path'
+import {execSync} from 'node:child_process'
 import {Command, Flags} from '@oclif/core'
 
 export default class Up extends Command {
-  static description = 'describe the command here'
+  static description = 'Run deployment update of the project'
 
   static examples = [
-    '<%= config.bin %> <%= command.id %>',
+    '<%= config.bin %> <%= command.id %> aws-cluster',
   ]
 
   static flags = {
-    // flag with a value (-n, --name=VALUE)
-    name: Flags.string({char: 'n', description: 'name to print'}),
-    // flag with no value (-f, --force)
-    force: Flags.boolean({char: 'f'}),
+    root: Flags.string({char: 'r', description: 'Root path of the project'}),
   }
 
-  static args = [{name: 'file'}]
+  static args = [{
+    name: 'projectName',
+    required: true,
+  }]
 
   public async run(): Promise<void> {
     const {args, flags} = await this.parse(Up)
 
-    const name = flags.name ?? 'world'
-    this.log(`hello ${name} from /Users/user/Code/cloudy/src/commands/up.ts`)
-    if (args.file && flags.force) {
-      this.log(`you input --force and --file: ${args.file}`)
-    }
+    const cwd = process.cwd()
+    const {projectName} = args
+    const projectRoot = flags.root ?? cwd
+    const projectPath = path.join(projectRoot, 'projects', projectName)
+
+    execSync(`(PULUMI_CONFIG_PASSPHRASE= cd ${projectPath} && sh up.sh ${projectName})`, {stdio: 'inherit'})
   }
 }
