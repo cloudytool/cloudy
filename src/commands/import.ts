@@ -3,6 +3,8 @@ import {execSync} from 'node:child_process'
 import {Command, Flags} from '@oclif/core'
 import Doctor from './doctor'
 
+import {PULUMI_CONFIG_PASSPHRASE, PULUMI_CONFIG_PASSPHRASE_FILE} from '../constants'
+
 export default class Import extends Command {
   static description = 'Import Pulumi project state'
 
@@ -32,7 +34,8 @@ export default class Import extends Command {
     const cmdName = this.constructor.name.toLowerCase()
 
     const cmd = [
-      'export PULUMI_CONFIG_PASSPHRASE=""',
+      `export PULUMI_CONFIG_PASSPHRASE="${PULUMI_CONFIG_PASSPHRASE}"`,
+      `export PULUMI_CONFIG_PASSPHRASE_FILE="${PULUMI_CONFIG_PASSPHRASE_FILE}"`,
       `cd ${projectPath}`,
       'yarn',
       `${process.env.SHELL} ${cmdName}.sh ${projectName}`,

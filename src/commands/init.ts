@@ -165,7 +165,7 @@ export default class Init extends Command {
     const ami = getUbuntu2004Ami(awsRegion)
 
     const pulumiConfig = {
-      encryptionsalt: 'v1:wUxgiwMWJko=:v1:F2fhIrmQIzxxlH7j:sa8sNszrg8kVS9YxWkTOeNX65aK1jg==',
+      encryptionsalt: 'v1:jH9Y0DHg6Mc=:v1:iYPl/3jJY/HWytgD:Eu+gifSkdxJZej4cKCKr5Q+hQyJzSw==',
       config: {
         'cluster:workerTokenPath': '/tmp/swarm/worker_token',
         'aws:profile': awsProfile,
