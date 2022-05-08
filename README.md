@@ -63,6 +63,18 @@ USAGE
 $ cloudy init aws-dev-cluster
 ```
 
+Then:
+
+```sh-session
+$ cloudy up aws-dev-cluster
+```
+
+To destroy after:
+
+```sh-session
+$ cloudy destroy aws-dev-cluster
+```
+
 # Commands
 <!-- commands -->
 - [Cloudy](#cloudy)
