@@ -12,7 +12,7 @@ _DevOps is not a primary skill in your company?_
 _Your infrastructure is a mess?_
 
 **Cloudy is your solution,**
-**Spend minutes instead of weeks**
+**spend minutes instead of weeks**
 
 # Features
 
