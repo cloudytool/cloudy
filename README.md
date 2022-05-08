@@ -1,18 +1,27 @@
-oclif-hello-world
+Cloudy
 =================
-
-oclif example Hello World CLI
-
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![CircleCI](https://circleci.com/gh/oclif/hello-world/tree/main.svg?style=shield)](https://circleci.com/gh/oclif/hello-world/tree/main)
-[![Downloads/week](https://img.shields.io/npm/dw/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![License](https://img.shields.io/npm/l/oclif-hello-world.svg)](https://github.com/oclif/hello-world/blob/main/package.json)
 
 <!-- toc -->
 * [Usage](#usage)
+* [Quick start](#quick-start)
 * [Commands](#commands)
 <!-- tocstop -->
+
+# Description
+
+**Cloudy** is an "infrastructure as code" tool for managing production-grade cloud clusters. It's based on [Pulumi](https://pulumi.com/) that mostly using [Terraform](https://www.terraform.io/).
+
+Tired of managing tons of information about cloud clusters deployment?
+DevOps is not a primary skill in your company?
+Your infrastructure is a mess?
+
+**Cloudy is your solution,**
+**Spend minutes instead of weeks**
+
+Supported platforms:
+- AWS
+- GCP (soon)
+
 # Usage
 <!-- usage -->
 ```sh-session
@@ -20,67 +29,92 @@ $ npm install -g cloudy
 $ cloudy COMMAND
 running command...
 $ cloudy (--version)
-cloudy/0.0.0 darwin-x64 node-v16.0.0
+cloudy/0.0.1 darwin-x64 node-v16.0.0
 $ cloudy --help [COMMAND]
 USAGE
   $ cloudy COMMAND
 ...
 ```
 <!-- usagestop -->
+
+# Quick start
+
+```sh-session
+$ cloudy init aws-dev-cluster
+```
+
 # Commands
 <!-- commands -->
-* [`cloudy hello PERSON`](#cloudy-hello-person)
-* [`cloudy hello world`](#cloudy-hello-world)
-* [`cloudy help [COMMAND]`](#cloudy-help-command)
-* [`cloudy plugins`](#cloudy-plugins)
-* [`cloudy plugins:install PLUGIN...`](#cloudy-pluginsinstall-plugin)
-* [`cloudy plugins:inspect PLUGIN...`](#cloudy-pluginsinspect-plugin)
-* [`cloudy plugins:install PLUGIN...`](#cloudy-pluginsinstall-plugin-1)
-* [`cloudy plugins:link PLUGIN`](#cloudy-pluginslink-plugin)
-* [`cloudy plugins:uninstall PLUGIN...`](#cloudy-pluginsuninstall-plugin)
-* [`cloudy plugins:uninstall PLUGIN...`](#cloudy-pluginsuninstall-plugin-1)
-* [`cloudy plugins:uninstall PLUGIN...`](#cloudy-pluginsuninstall-plugin-2)
-* [`cloudy plugins update`](#cloudy-plugins-update)
+- [Cloudy](#cloudy)
+- [Description](#description)
+- [Usage](#usage)
+- [Quick start](#quick-start)
+- [Commands](#commands)
+  - [`cloudy destroy PROJECTNAME`](#cloudy-destroy-projectname)
+  - [`cloudy doctor`](#cloudy-doctor)
+  - [`cloudy export PROJECTNAME`](#cloudy-export-projectname)
+  - [`cloudy help [COMMAND]`](#cloudy-help-command)
+  - [`cloudy import PROJECTNAME`](#cloudy-import-projectname)
+  - [`cloudy init PROJECTNAME`](#cloudy-init-projectname)
+  - [`cloudy preview PROJECTNAME`](#cloudy-preview-projectname)
+  - [`cloudy up PROJECTNAME`](#cloudy-up-projectname)
 
-## `cloudy hello PERSON`
+## `cloudy destroy PROJECTNAME`
 
-Say hello
+Destroy Pulumi project deployment
 
 ```
 USAGE
-  $ cloudy hello [PERSON] -f <value>
-
-ARGUMENTS
-  PERSON  Person to say hello to
+  $ cloudy destroy [PROJECTNAME] [-r <value>]
 
 FLAGS
-  -f, --from=<value>  (required) Whom is saying hello
+  -r, --root=<value>  Root path to the project
 
 DESCRIPTION
-  Say hello
+  Destroy Pulumi project deployment
 
 EXAMPLES
-  $ oex hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
+  $ cloudy destroy aws-cluster
 ```
 
-_See code: [dist/commands/hello/index.ts](https://github.com/cloudy/cloudy/blob/v0.0.0/dist/commands/hello/index.ts)_
+_See code: [dist/commands/destroy.ts](https://github.com/cloudy/cloudy/blob/v0.0.1/dist/commands/destroy.ts)_
 
-## `cloudy hello world`
+## `cloudy doctor`
 
-Say hello world
+Check CLI issues
 
 ```
 USAGE
-  $ cloudy hello world
+  $ cloudy doctor
 
 DESCRIPTION
-  Say hello world
+  Check CLI issues
 
 EXAMPLES
-  $ oex hello world
-  hello world! (./src/commands/hello/world.ts)
+  $ cloudy doctor
 ```
+
+_See code: [dist/commands/doctor.ts](https://github.com/cloudy/cloudy/blob/v0.0.1/dist/commands/doctor.ts)_
+
+## `cloudy export PROJECTNAME`
+
+Export Pulumi project state
+
+```
+USAGE
+  $ cloudy export [PROJECTNAME] [-r <value>]
+
+FLAGS
+  -r, --root=<value>  Root path to the project
+
+DESCRIPTION
+  Export Pulumi project state
+
+EXAMPLES
+  $ cloudy export aws-cluster
+```
+
+_See code: [dist/commands/export.ts](https://github.com/cloudy/cloudy/blob/v0.0.1/dist/commands/export.ts)_
 
 ## `cloudy help [COMMAND]`
 
@@ -102,233 +136,83 @@ DESCRIPTION
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.10/src/commands/help.ts)_
 
-## `cloudy plugins`
+## `cloudy import PROJECTNAME`
 
-List installed plugins.
+Import Pulumi project state
 
 ```
 USAGE
-  $ cloudy plugins [--core]
+  $ cloudy import [PROJECTNAME] [-r <value>]
 
 FLAGS
-  --core  Show core plugins.
+  -r, --root=<value>  Root path to the project
 
 DESCRIPTION
-  List installed plugins.
+  Import Pulumi project state
 
 EXAMPLES
-  $ cloudy plugins
+  $ cloudy import aws-cluster
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v2.0.11/src/commands/plugins/index.ts)_
+_See code: [dist/commands/import.ts](https://github.com/cloudy/cloudy/blob/v0.0.1/dist/commands/import.ts)_
 
-## `cloudy plugins:install PLUGIN...`
+## `cloudy init PROJECTNAME`
 
-Installs a plugin into the CLI.
+Initialize a new project
 
 ```
 USAGE
-  $ cloudy plugins:install PLUGIN...
-
-ARGUMENTS
-  PLUGIN  Plugin to install.
+  $ cloudy init [PROJECTNAME] [-r <value>]
 
 FLAGS
-  -f, --force    Run yarn install with force flag.
-  -h, --help     Show CLI help.
-  -v, --verbose
+  -r, --root=<value>  Root path to the project
 
 DESCRIPTION
-  Installs a plugin into the CLI.
-
-  Can be installed from npm or a git url.
-
-  Installation of a user-installed plugin will override a core plugin.
-
-  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command
-  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in
-  the CLI without the need to patch and update the whole CLI.
-
-ALIASES
-  $ cloudy plugins add
+  Initialize a new project
 
 EXAMPLES
-  $ cloudy plugins:install myplugin 
-
-  $ cloudy plugins:install https://github.com/someuser/someplugin
-
-  $ cloudy plugins:install someuser/someplugin
+  $ cloudy init aws-cluster
 ```
 
-## `cloudy plugins:inspect PLUGIN...`
+_See code: [dist/commands/init.ts](https://github.com/cloudy/cloudy/blob/v0.0.1/dist/commands/init.ts)_
 
-Displays installation properties of a plugin.
+## `cloudy preview PROJECTNAME`
+
+Preview Pulumi project deployment update
 
 ```
 USAGE
-  $ cloudy plugins:inspect PLUGIN...
-
-ARGUMENTS
-  PLUGIN  [default: .] Plugin to inspect.
+  $ cloudy preview [PROJECTNAME] [-r <value>]
 
 FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
+  -r, --root=<value>  Root path to the project
 
 DESCRIPTION
-  Displays installation properties of a plugin.
+  Preview Pulumi project deployment update
 
 EXAMPLES
-  $ cloudy plugins:inspect myplugin
+  $ cloudy preview aws-cluster
 ```
 
-## `cloudy plugins:install PLUGIN...`
+_See code: [dist/commands/preview.ts](https://github.com/cloudy/cloudy/blob/v0.0.1/dist/commands/preview.ts)_
 
-Installs a plugin into the CLI.
+## `cloudy up PROJECTNAME`
+
+Run Pulumi project deployment update
 
 ```
 USAGE
-  $ cloudy plugins:install PLUGIN...
-
-ARGUMENTS
-  PLUGIN  Plugin to install.
+  $ cloudy up [PROJECTNAME] [-r <value>]
 
 FLAGS
-  -f, --force    Run yarn install with force flag.
-  -h, --help     Show CLI help.
-  -v, --verbose
+  -r, --root=<value>  Root path to the project
 
 DESCRIPTION
-  Installs a plugin into the CLI.
-
-  Can be installed from npm or a git url.
-
-  Installation of a user-installed plugin will override a core plugin.
-
-  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command
-  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in
-  the CLI without the need to patch and update the whole CLI.
-
-ALIASES
-  $ cloudy plugins add
+  Run Pulumi project deployment update
 
 EXAMPLES
-  $ cloudy plugins:install myplugin 
-
-  $ cloudy plugins:install https://github.com/someuser/someplugin
-
-  $ cloudy plugins:install someuser/someplugin
+  $ cloudy up aws-cluster
 ```
 
-## `cloudy plugins:link PLUGIN`
-
-Links a plugin into the CLI for development.
-
-```
-USAGE
-  $ cloudy plugins:link PLUGIN
-
-ARGUMENTS
-  PATH  [default: .] path to plugin
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Links a plugin into the CLI for development.
-
-  Installation of a linked plugin will override a user-installed or core plugin.
-
-  e.g. If you have a user-installed or core plugin that has a 'hello' command, installing a linked plugin with a 'hello'
-  command will override the user-installed or core plugin implementation. This is useful for development work.
-
-EXAMPLES
-  $ cloudy plugins:link myplugin
-```
-
-## `cloudy plugins:uninstall PLUGIN...`
-
-Removes a plugin from the CLI.
-
-```
-USAGE
-  $ cloudy plugins:uninstall PLUGIN...
-
-ARGUMENTS
-  PLUGIN  plugin to uninstall
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Removes a plugin from the CLI.
-
-ALIASES
-  $ cloudy plugins unlink
-  $ cloudy plugins remove
-```
-
-## `cloudy plugins:uninstall PLUGIN...`
-
-Removes a plugin from the CLI.
-
-```
-USAGE
-  $ cloudy plugins:uninstall PLUGIN...
-
-ARGUMENTS
-  PLUGIN  plugin to uninstall
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Removes a plugin from the CLI.
-
-ALIASES
-  $ cloudy plugins unlink
-  $ cloudy plugins remove
-```
-
-## `cloudy plugins:uninstall PLUGIN...`
-
-Removes a plugin from the CLI.
-
-```
-USAGE
-  $ cloudy plugins:uninstall PLUGIN...
-
-ARGUMENTS
-  PLUGIN  plugin to uninstall
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Removes a plugin from the CLI.
-
-ALIASES
-  $ cloudy plugins unlink
-  $ cloudy plugins remove
-```
-
-## `cloudy plugins update`
-
-Update installed plugins.
-
-```
-USAGE
-  $ cloudy plugins update [-h] [-v]
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Update installed plugins.
-```
+_See code: [dist/commands/up.ts](https://github.com/cloudy/cloudy/blob/v0.0.1/dist/commands/up.ts)_
 <!-- commandsstop -->

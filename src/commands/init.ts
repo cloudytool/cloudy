@@ -74,7 +74,7 @@ export default class Init extends Command {
   ]
 
   static flags = {
-    root: Flags.string({char: 'r', description: 'Root path of the project'}),
+    root: Flags.string({char: 'r', description: 'Root path to the project'}),
   }
 
   static args = [{
