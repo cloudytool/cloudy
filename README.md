@@ -29,7 +29,9 @@ _Your infrastructure is a mess?_
 # How it works
 
 **Cloudy** asks some questions about your cloud cluster and then creates a Pulumi project. The folder contains javascript files and code that define the cloud resources. In addition, the tool allows you to change the config file and resources structure: scale, change node types, disk size, etc... By calling `cloudy up PROJECTNAME` Pulumi deploys the cloud resources to your cloud provider and saving the state. To export the state use `cloudy export PROJECTNAME`.
+
 This approach provides maximum flexibility and less friction to start the stack fast.
+
 Save state and code to your git repository, deploy again in minutes.
 
 # Requirements
