@@ -6,7 +6,9 @@ Cloudy
 **Cloudy** is an "infrastructure as code" tool for managing production-grade cloud clusters. It's based on [Pulumi](https://pulumi.com/) that mostly using [Terraform](https://www.terraform.io/).
 
 Tired to manage tons of information about the cloud clusters deployment?
+
 DevOps is not a primary skill in your company?
+
 Your infrastructure is a mess?
 
 **Cloudy is your solution,**
