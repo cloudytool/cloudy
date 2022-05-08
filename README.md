@@ -1,35 +1,51 @@
 Cloudy
 =================
 
-<!-- toc -->
-* [Usage](#usage)
-* [Quick start](#quick-start)
-* [Commands](#commands)
-<!-- tocstop -->
-
 # Description
 
 **Cloudy** is an "infrastructure as code" tool for managing production-grade cloud clusters. It's based on [Pulumi](https://pulumi.com/) that mostly using [Terraform](https://www.terraform.io/).
 
-Tired of managing tons of information about cloud clusters deployment?
+Tired to manage tons of information about the cloud clusters deployment?
 DevOps is not a primary skill in your company?
 Your infrastructure is a mess?
 
 **Cloudy is your solution,**
 **Spend minutes instead of weeks**
 
-Supported platforms:
-- AWS
-- GCP (soon)
+# Features
+
+* Deploy and manage multiple cloud clusters in parallel
+* Networking, DNS, firewall, load balancer, firewall rules, and more
+* Nodes clustering and scaling
+* Cloud database and storage management
+* Automated backups
+* Incremental infrastructure updates
+* Supported platforms:
+  - [AWS](https://github.com/cloudytool/pulumi-aws-cluster)
+  - GCP (next release)
+
+# How it works
+
+**Cloudy** asks some questions about your cloud cluster and then creates a Pulumi project. The folder contains javascript files and code that define the cloud resources. In addition, the tool allows you to change the config file and resources structure: scale, change node types, disk size, etc... By calling `cloudy up PROJECTNAME` Pulumi deploys the cloud resources to your cloud provider and saving the state. To export the state use `cloudy export PROJECTNAME`.
+This approach provides maximum flexibility and less friction to start the stack fast.
+Save state and code to your git repository, deploy again in minutes.
+
+# Requirements
+
+Install before using:
+
+* [Git](https://git-scm.com/downloads)
+* [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
+* [Pulumi](https://www.pulumi.com/docs/get-started/install)
 
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g cloudy
+$ npm install -g @cloudytool/cloudy
 $ cloudy COMMAND
 running command...
 $ cloudy (--version)
-cloudy/0.0.1 darwin-x64 node-v16.0.0
+@cloudytool/cloudy/0.0.1 darwin-x64 node-v16.0.0
 $ cloudy --help [COMMAND]
 USAGE
   $ cloudy COMMAND
@@ -47,6 +63,9 @@ $ cloudy init aws-dev-cluster
 <!-- commands -->
 - [Cloudy](#cloudy)
 - [Description](#description)
+- [Features](#features)
+- [How it works](#how-it-works)
+- [Requirements](#requirements)
 - [Usage](#usage)
 - [Quick start](#quick-start)
 - [Commands](#commands)
@@ -77,7 +96,7 @@ EXAMPLES
   $ cloudy destroy aws-cluster
 ```
 
-_See code: [dist/commands/destroy.ts](https://github.com/cloudy/cloudy/blob/v0.0.1/dist/commands/destroy.ts)_
+_See code: [dist/commands/destroy.ts](https://github.com/cloudytool/cloudy/blob/v0.0.1/dist/commands/destroy.ts)_
 
 ## `cloudy doctor`
 
@@ -94,7 +113,7 @@ EXAMPLES
   $ cloudy doctor
 ```
 
-_See code: [dist/commands/doctor.ts](https://github.com/cloudy/cloudy/blob/v0.0.1/dist/commands/doctor.ts)_
+_See code: [dist/commands/doctor.ts](https://github.com/cloudytool/cloudy/blob/v0.0.1/dist/commands/doctor.ts)_
 
 ## `cloudy export PROJECTNAME`
 
@@ -114,7 +133,7 @@ EXAMPLES
   $ cloudy export aws-cluster
 ```
 
-_See code: [dist/commands/export.ts](https://github.com/cloudy/cloudy/blob/v0.0.1/dist/commands/export.ts)_
+_See code: [dist/commands/export.ts](https://github.com/cloudytool/cloudy/blob/v0.0.1/dist/commands/export.ts)_
 
 ## `cloudy help [COMMAND]`
 
@@ -154,7 +173,7 @@ EXAMPLES
   $ cloudy import aws-cluster
 ```
 
-_See code: [dist/commands/import.ts](https://github.com/cloudy/cloudy/blob/v0.0.1/dist/commands/import.ts)_
+_See code: [dist/commands/import.ts](https://github.com/cloudytool/cloudy/blob/v0.0.1/dist/commands/import.ts)_
 
 ## `cloudy init PROJECTNAME`
 
@@ -174,7 +193,7 @@ EXAMPLES
   $ cloudy init aws-cluster
 ```
 
-_See code: [dist/commands/init.ts](https://github.com/cloudy/cloudy/blob/v0.0.1/dist/commands/init.ts)_
+_See code: [dist/commands/init.ts](https://github.com/cloudytool/cloudy/blob/v0.0.1/dist/commands/init.ts)_
 
 ## `cloudy preview PROJECTNAME`
 
@@ -194,7 +213,7 @@ EXAMPLES
   $ cloudy preview aws-cluster
 ```
 
-_See code: [dist/commands/preview.ts](https://github.com/cloudy/cloudy/blob/v0.0.1/dist/commands/preview.ts)_
+_See code: [dist/commands/preview.ts](https://github.com/cloudytool/cloudy/blob/v0.0.1/dist/commands/preview.ts)_
 
 ## `cloudy up PROJECTNAME`
 
@@ -214,5 +233,5 @@ EXAMPLES
   $ cloudy up aws-cluster
 ```
 
-_See code: [dist/commands/up.ts](https://github.com/cloudy/cloudy/blob/v0.0.1/dist/commands/up.ts)_
+_See code: [dist/commands/up.ts](https://github.com/cloudytool/cloudy/blob/v0.0.1/dist/commands/up.ts)_
 <!-- commandsstop -->
