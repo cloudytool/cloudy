@@ -107,9 +107,6 @@ export default class Init extends Command {
 
     const awsZone = await cli.prompt('AWS zone', {default: awsZones[0]})
 
-    const awsS3AccessKeyId = await cli.prompt('AWS S3 access key id (for tokens exchange)')
-    const awsS3SecretAccessKey = await cli.prompt('AWS S3 secret access key (for tokens exchange)')
-
     const workersCount = await cli.prompt('Workers count', {default: '1'})
     const instanceType = await cli.prompt('Worker instance type', {default: 't2.medium'})
     const ebsVolumeSize = await cli.prompt('EBS volume size (GB)', {default: '70'})
@@ -182,8 +179,6 @@ export default class Init extends Command {
         'cluster:workerTokenPath': '/tmp/swarm/worker_token',
         'aws:profile': awsProfile,
         'aws:region': awsRegion,
-        's3:accessKeyId': awsS3AccessKeyId,
-        's3:secretAccessKey': awsS3SecretAccessKey,
         'ec2:projectName': projectName,
         'ec2:masters': 1,
         'ec2:slaves': Number.parseInt(workersCount, 10),
