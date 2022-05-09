@@ -164,12 +164,12 @@ export default class Init extends Command {
     const users = [{
       's3-examples': {
         Version: '2012-10-17',
-        Statement: {
+        Statement: [{
           Sid: 'AllObjectActions',
           Action: ['s3:*Object'],
           Effect: 'Allow',
           Resource: '*',
-        },
+        }],
       },
     }]
 
