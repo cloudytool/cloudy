@@ -16,7 +16,7 @@ _Your infrastructure is a mess?_
 
 # Features
 
-* Deploy and manage multiple cloud clusters in parallel
+* Deploy and manage multiple cloud clusters in parallel: AWS, Azure, Google, and others
 * Networking, DNS, firewall, load balancer, firewall rules, and more
 * Nodes clustering and scaling
 * Cloud database and storage management
@@ -63,7 +63,7 @@ USAGE
 $ cloudy init aws-dev-cluster
 ```
 
-Then:
+To deploy:
 
 ```sh-session
 $ cloudy up aws-dev-cluster
