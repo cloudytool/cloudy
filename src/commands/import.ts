@@ -5,8 +5,8 @@ import Doctor from './doctor'
 
 import {PULUMI_CONFIG_PASSPHRASE, PULUMI_CONFIG_PASSPHRASE_FILE} from '../constants'
 
-export default class Up extends Command {
-  static description = 'Run Pulumi project deployment update'
+export default class Import extends Command {
+  static description = 'Import Pulumi project state'
 
   static examples = [
     '<%= config.bin %> <%= command.id %> aws-cluster',
@@ -22,7 +22,7 @@ export default class Up extends Command {
   }]
 
   public async run(): Promise<void> {
-    const {args, flags} = await this.parse(Up)
+    const {args, flags} = await this.parse(Import)
 
     const cwd = process.cwd()
     const {projectName} = args
