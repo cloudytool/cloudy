@@ -132,7 +132,7 @@ export default class Init extends Command {
       'db:allocatedStorage': 30,
       'db:maxAllocatedStorage': 100,
       'db:engine': 'postgres',
-      'db:engineVersion': 12.4,
+      'db:engineVersion': 12.1,
       'db:engineGroupName': 'default.postgres12',
       'db:instanceClass': 'db.t3.medium',
       'db:user': '',
@@ -164,6 +164,18 @@ export default class Init extends Command {
 
     const ami = getUbuntu2004Ami(awsRegion)
 
+    const users = [{
+      's3-examples': {
+        Version: '2012-10-17',
+        Statement: {
+          Sid: 'AllObjectActions',
+          Action: ['s3:*Object'],
+          Effect: 'Allow',
+          Resource: '*',
+        },
+      },
+    }]
+
     const pulumiConfig = {
       encryptionsalt: 'v1:NXHcHtVQQ4M=:v1:6QZlxzHc1KMxWwiv:gYgSzNAgfFItMtLFZhGSSfsf5S5jPQ==',
       config: {
@@ -182,6 +194,7 @@ export default class Init extends Command {
         'ec2:default/ebsVolumeSize': Number.parseInt(ebsVolumeSize, 10),
         'ec2:default/ebsDeviseName': '/dev/sdb',
         'app:domainName': domainName,
+        'iam:users': users,
         ...dbConfig,
       },
     }
