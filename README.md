@@ -49,7 +49,7 @@ $ npm install -g @cloudytool/cloudy
 $ cloudy COMMAND
 running command...
 $ cloudy (--version)
-@cloudytool/cloudy/0.0.2 darwin-x64 node-v16.0.0
+@cloudytool/cloudy/0.0.3 darwin-x64 node-v16.0.0
 $ cloudy --help [COMMAND]
 USAGE
   $ cloudy COMMAND
@@ -77,22 +77,14 @@ $ cloudy destroy aws-dev-cluster
 
 # Commands
 <!-- commands -->
-- [Cloudy](#cloudy)
-- [Description](#description)
-- [Features](#features)
-- [How it works](#how-it-works)
-- [Requirements](#requirements)
-- [Usage](#usage)
-- [Quick start](#quick-start)
-- [Commands](#commands)
-  - [`cloudy destroy PROJECTNAME`](#cloudy-destroy-projectname)
-  - [`cloudy doctor`](#cloudy-doctor)
-  - [`cloudy export PROJECTNAME`](#cloudy-export-projectname)
-  - [`cloudy help [COMMAND]`](#cloudy-help-command)
-  - [`cloudy import PROJECTNAME`](#cloudy-import-projectname)
-  - [`cloudy init PROJECTNAME`](#cloudy-init-projectname)
-  - [`cloudy preview PROJECTNAME`](#cloudy-preview-projectname)
-  - [`cloudy up PROJECTNAME`](#cloudy-up-projectname)
+* [`cloudy destroy PROJECTNAME`](#cloudy-destroy-projectname)
+* [`cloudy doctor`](#cloudy-doctor)
+* [`cloudy export PROJECTNAME`](#cloudy-export-projectname)
+* [`cloudy help [COMMAND]`](#cloudy-help-command)
+* [`cloudy import PROJECTNAME`](#cloudy-import-projectname)
+* [`cloudy init PROJECTNAME`](#cloudy-init-projectname)
+* [`cloudy preview PROJECTNAME`](#cloudy-preview-projectname)
+* [`cloudy up PROJECTNAME`](#cloudy-up-projectname)
 
 ## `cloudy destroy PROJECTNAME`
 
@@ -112,7 +104,7 @@ EXAMPLES
   $ cloudy destroy aws-cluster
 ```
 
-_See code: [dist/commands/destroy.ts](https://github.com/cloudytool/cloudy/blob/v0.0.2/dist/commands/destroy.ts)_
+_See code: [dist/commands/destroy.ts](https://github.com/cloudytool/cloudy/blob/v0.0.3/dist/commands/destroy.ts)_
 
 ## `cloudy doctor`
 
@@ -129,7 +121,7 @@ EXAMPLES
   $ cloudy doctor
 ```
 
-_See code: [dist/commands/doctor.ts](https://github.com/cloudytool/cloudy/blob/v0.0.2/dist/commands/doctor.ts)_
+_See code: [dist/commands/doctor.ts](https://github.com/cloudytool/cloudy/blob/v0.0.3/dist/commands/doctor.ts)_
 
 ## `cloudy export PROJECTNAME`
 
@@ -149,7 +141,7 @@ EXAMPLES
   $ cloudy export aws-cluster
 ```
 
-_See code: [dist/commands/export.ts](https://github.com/cloudytool/cloudy/blob/v0.0.2/dist/commands/export.ts)_
+_See code: [dist/commands/export.ts](https://github.com/cloudytool/cloudy/blob/v0.0.3/dist/commands/export.ts)_
 
 ## `cloudy help [COMMAND]`
 
@@ -169,7 +161,7 @@ DESCRIPTION
   Display help for cloudy.
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.10/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.12/src/commands/help.ts)_
 
 ## `cloudy import PROJECTNAME`
 
@@ -189,7 +181,7 @@ EXAMPLES
   $ cloudy import aws-cluster
 ```
 
-_See code: [dist/commands/import.ts](https://github.com/cloudytool/cloudy/blob/v0.0.2/dist/commands/import.ts)_
+_See code: [dist/commands/import.ts](https://github.com/cloudytool/cloudy/blob/v0.0.3/dist/commands/import.ts)_
 
 ## `cloudy init PROJECTNAME`
 
@@ -209,7 +201,7 @@ EXAMPLES
   $ cloudy init aws-cluster
 ```
 
-_See code: [dist/commands/init.ts](https://github.com/cloudytool/cloudy/blob/v0.0.2/dist/commands/init.ts)_
+_See code: [dist/commands/init.ts](https://github.com/cloudytool/cloudy/blob/v0.0.3/dist/commands/init.ts)_
 
 ## `cloudy preview PROJECTNAME`
 
@@ -229,7 +221,7 @@ EXAMPLES
   $ cloudy preview aws-cluster
 ```
 
-_See code: [dist/commands/preview.ts](https://github.com/cloudytool/cloudy/blob/v0.0.2/dist/commands/preview.ts)_
+_See code: [dist/commands/preview.ts](https://github.com/cloudytool/cloudy/blob/v0.0.3/dist/commands/preview.ts)_
 
 ## `cloudy up PROJECTNAME`
 
@@ -249,5 +241,5 @@ EXAMPLES
   $ cloudy up aws-cluster
 ```
 
-_See code: [dist/commands/up.ts](https://github.com/cloudytool/cloudy/blob/v0.0.2/dist/commands/up.ts)_
+_See code: [dist/commands/up.ts](https://github.com/cloudytool/cloudy/blob/v0.0.3/dist/commands/up.ts)_
 <!-- commandsstop -->

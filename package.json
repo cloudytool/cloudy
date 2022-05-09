@@ -1,7 +1,7 @@
 {
   "name": "@cloudytool/cloudy",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Cloudy is an \"infrastructure as code\" tool for managing production-grade cloud clusters.",
   "author": "Ivan Fokeev @ifokeev",
   "bin": {
