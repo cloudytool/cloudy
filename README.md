@@ -63,6 +63,8 @@ USAGE
 $ cloudy init aws-dev-cluster
 ```
 
+![Cloudy init example](cloudy-init-example.gif)
+
 To deploy:
 
 ```sh-session
@@ -77,14 +79,22 @@ $ cloudy destroy aws-dev-cluster
 
 # Commands
 <!-- commands -->
-* [`cloudy destroy PROJECTNAME`](#cloudy-destroy-projectname)
-* [`cloudy doctor`](#cloudy-doctor)
-* [`cloudy export PROJECTNAME`](#cloudy-export-projectname)
-* [`cloudy help [COMMAND]`](#cloudy-help-command)
-* [`cloudy import PROJECTNAME`](#cloudy-import-projectname)
-* [`cloudy init PROJECTNAME`](#cloudy-init-projectname)
-* [`cloudy preview PROJECTNAME`](#cloudy-preview-projectname)
-* [`cloudy up PROJECTNAME`](#cloudy-up-projectname)
+- [Cloudy](#cloudy)
+- [Description](#description)
+- [Features](#features)
+- [How it works](#how-it-works)
+- [Requirements](#requirements)
+- [Usage](#usage)
+- [Quick start](#quick-start)
+- [Commands](#commands)
+  - [`cloudy destroy PROJECTNAME`](#cloudy-destroy-projectname)
+  - [`cloudy doctor`](#cloudy-doctor)
+  - [`cloudy export PROJECTNAME`](#cloudy-export-projectname)
+  - [`cloudy help [COMMAND]`](#cloudy-help-command)
+  - [`cloudy import PROJECTNAME`](#cloudy-import-projectname)
+  - [`cloudy init PROJECTNAME`](#cloudy-init-projectname)
+  - [`cloudy preview PROJECTNAME`](#cloudy-preview-projectname)
+  - [`cloudy up PROJECTNAME`](#cloudy-up-projectname)
 
 ## `cloudy destroy PROJECTNAME`
 
